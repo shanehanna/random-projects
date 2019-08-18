@@ -9,9 +9,6 @@ label1.grid(row = 0, column = 0)
 label1 = Label(window, text = 'Which dice do you want to roll?  ')
 label1.grid(row = 1, column = 0)
 
-entry = Entry(window)
-entry.grid(row = 2, column = 0)
-
 def roll(event):
 	if entry.get()=='4' or entry.get()=='d4' or entry.get()=='D4' or entry.get()=='Dice 4' or entry.get()=='4 Side' or entry.get()=='4 side' or entry.get()=='4 Sided' or entry.get()=='4 sided':
 		tkinter.messagebox.showinfo("Result", random.randint(1,4))
@@ -31,7 +28,12 @@ def roll(event):
 	if entry.get()=='20' or entry.get()=='d20' or entry.get()=='D20' or entry.get()=='Dice 20' or entry.get()=='20 Side' or entry.get()=='20 side' or entry.get()=='20 Sided' or entry.get()=='20 sided':
 		tkinter.messagebox.showinfo("Result", random.randint(1,20))
 
+entry = Entry(window)
+entry.grid(row = 2, column = 0)
+entry.bind("<Return>", roll)
+
 start_button = Button(window, text = "Roll", fg = "green", command = entry)
 start_button.bind("<Button-1>", roll)
+
 start_button.grid(row = 3, column = 0)
 window.mainloop()
